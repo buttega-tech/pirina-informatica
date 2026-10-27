@@ -12,12 +12,18 @@
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
-        return JSON.parse(stored);
+        const parsed = JSON.parse(stored);
+        // Assicurati che i ticket esistano anche se lo storage era stato creato in precedenza
+        if (!parsed.tickets && window.PIRINA_DEFAULT_DATA && window.PIRINA_DEFAULT_DATA.tickets) {
+          parsed.tickets = clone(window.PIRINA_DEFAULT_DATA.tickets);
+          saveRawData(parsed);
+        }
+        return parsed;
       }
     } catch (e) {
       console.warn('LocalStorage non accessibile o corrotto, fallback a default:', e);
     }
-    const defaults = window.PIRINA_DEFAULT_DATA || { labConfig: {}, repairs: [] };
+    const defaults = window.PIRINA_DEFAULT_DATA || { labConfig: {}, repairs: [], tickets: [] };
     saveRawData(defaults);
     return clone(defaults);
   }
@@ -54,6 +60,8 @@
 
     getStats() {
       const repairs = this.getAllRepairs();
+      const tickets = this.getAllTickets();
+
       const active = repairs.filter(r => r.step >= 1 && r.step <= 4);
       const ready = repairs.filter(r => r.step === 5);
       const delivered = repairs.filter(r => r.step === 6);
@@ -66,6 +74,11 @@
       const collectedDeposits = repairs
         .reduce((sum, r) => sum + (Number(r.depositPaid) || 0), 0);
 
+      const openTickets = tickets.filter(t => t.status === 'aperto');
+      const inProgressTickets = tickets.filter(t => t.status === 'in_gestione');
+      const resolvedTickets = tickets.filter(t => t.status === 'risolto');
+      const convertedTickets = tickets.filter(t => t.status === 'convertito');
+
       return {
         total: repairs.length,
         activeCount: active.length,
@@ -73,8 +86,173 @@
         deliveredCount: delivered.length,
         pendingDiagnosisCount: pendingDiagnosis.length,
         totalEstimatedRevenue,
-        collectedDeposits
+        collectedDeposits,
+        // Support Tickets
+        totalTickets: tickets.length,
+        openTicketsCount: openTickets.length,
+        inProgressTicketsCount: inProgressTickets.length,
+        resolvedTicketsCount: resolvedTickets.length,
+        convertedTicketsCount: convertedTickets.length
       };
+    },
+
+    // -------------------------------------------------------------
+    // Support Tickets: Query
+    // -------------------------------------------------------------
+    getAllTickets() {
+      const data = getRawData();
+      return (data.tickets || []).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    },
+
+    getTicketByRef(ref) {
+      if (!ref) return null;
+      const clean = ref.trim().toUpperCase();
+      const tickets = this.getAllTickets();
+      return tickets.find(t => (t.ticketRef && t.ticketRef.toUpperCase() === clean)) || null;
+    },
+
+    getTicketById(id) {
+      const tickets = this.getAllTickets();
+      return tickets.find(t => t.id === id) || null;
+    },
+
+    // -------------------------------------------------------------
+    // Support Tickets: Scrittura & Handoff
+    // -------------------------------------------------------------
+    createTicket(ticketInput) {
+      const data = getRawData();
+      data.tickets = data.tickets || [];
+
+      // Determina codice progressivo TICK-XXX
+      let maxNum = 103;
+      data.tickets.forEach(t => {
+        if (t.ticketRef) {
+          const match = t.ticketRef.match(/TICK-(\d+)/i);
+          if (match) {
+            const val = parseInt(match[1], 10);
+            if (val > maxNum) maxNum = val;
+          }
+        }
+      });
+      const nextRef = `TICK-${maxNum + 1}`;
+
+      const newTicket = {
+        id: 'tick-' + Date.now(),
+        ticketRef: nextRef,
+        customerName: (ticketInput.customerName || '').trim(),
+        customerPhone: (ticketInput.customerPhone || '').trim(),
+        deviceType: ticketInput.deviceType || 'Smartphone',
+        deviceModel: (ticketInput.deviceModel || '').trim(),
+        subject: (ticketInput.subject || '').trim(),
+        message: (ticketInput.message || '').trim(),
+        urgency: ticketInput.urgency || 'normale',
+        status: 'aperto', // 'aperto' | 'in_gestione' | 'risolto' | 'convertito'
+        createdAt: new Date().toISOString(),
+        convertedRepairCode: null,
+        channel: 'web+whatsapp'
+      };
+
+      data.tickets.unshift(newTicket);
+      saveRawData(data);
+      return newTicket;
+    },
+
+    updateTicket(id, patches) {
+      const data = getRawData();
+      const index = (data.tickets || []).findIndex(t => t.id === id);
+      if (index === -1) return null;
+
+      data.tickets[index] = {
+        ...data.tickets[index],
+        ...patches,
+        updatedAt: new Date().toISOString()
+      };
+
+      saveRawData(data);
+      return data.tickets[index];
+    },
+
+    updateTicketStatus(id, newStatus) {
+      return this.updateTicket(id, { status: newStatus });
+    },
+
+    deleteTicket(id) {
+      const data = getRawData();
+      data.tickets = (data.tickets || []).filter(t => t.id !== id);
+      saveRawData(data);
+      return true;
+    },
+
+    // Conversione da Ticket di supporto in Scheda di riparazione banco (PIR-XXX)
+    convertTicketToRepair(ticketId) {
+      const ticket = this.getTicketById(ticketId);
+      if (!ticket) return null;
+
+      if (ticket.status === 'convertito' && ticket.convertedRepairCode) {
+        return {
+          ticket,
+          repair: this.getRepairByCode(ticket.convertedRepairCode)
+        };
+      }
+
+      // Crea la riparazione
+      const repairRecord = {
+        customerName: ticket.customerName,
+        customerPhone: ticket.customerPhone,
+        deviceType: ticket.deviceType,
+        deviceModel: ticket.deviceModel,
+        issueDescription: ticket.subject ? `${ticket.subject} — ${ticket.message}` : ticket.message,
+        step: 1, // Check-in iniziale
+        statusText: `Ricevuto via ticket ${ticket.ticketRef}. Apparato atteso per check-in fisico in Via Roma 99.`,
+        technician: 'Andrea P.',
+        internalNotes: `Generato automaticamente dal Ticket Assistenza ${ticket.ticketRef} (Urgenza: ${ticket.urgency}). Canale: ${ticket.channel}.`
+      };
+
+      const newRepair = this.createRepair(repairRecord);
+
+      // Aggiorna lo stato del ticket
+      const updatedTicket = this.updateTicket(ticketId, {
+        status: 'convertito',
+        convertedRepairCode: newRepair.code
+      });
+
+      return {
+        ticket: updatedTicket,
+        repair: newRepair
+      };
+    },
+
+    // Generatore link WhatsApp per Ticket (continuazione bilaterale)
+    buildWhatsAppTicketUrl(ticket, direction = 'client') {
+      if (!ticket) return '#';
+
+      if (direction === 'client') {
+        // Handoff del cliente verso Andrea Pirina (+39 329 724 5039)
+        const targetPhone = '393297245039';
+        const msg = `Ciao Andrea (Pirina Informatica), ho appena inviato la richiesta di assistenza [Ticket #${ticket.ticketRef}] dal vostro sito web.\n\n` +
+          `• Dispositivo: ${ticket.deviceModel || ticket.deviceType}\n` +
+          `• Oggetto: ${ticket.subject}\n` +
+          `• Dettagli: ${ticket.message}\n` +
+          `• Urgenza: ${ticket.urgency}\n\n` +
+          `Vorrei continuare qui su WhatsApp per aggiornamenti o per concordare la consegna in Via Roma 99.`;
+        return `https://wa.me/${targetPhone}?text=${encodeURIComponent(msg)}`;
+      }
+
+      if (direction === 'admin') {
+        // Risposta da Andrea Pirina verso il cliente
+        const cleanPhone = (ticket.customerPhone || '').replace(/[^\d+]/g, '');
+        const phoneToUse = cleanPhone.startsWith('+') 
+          ? cleanPhone.slice(1) 
+          : (cleanPhone.startsWith('39') ? cleanPhone : '39' + cleanPhone);
+
+        const msg = `Ciao ${ticket.customerName || 'Cliente'}, sono Andrea di Pirina Informatica (Via Roma 99, Olbia).\n\n` +
+          `Ho preso in carico la tua richiesta di supporto [Ticket #${ticket.ticketRef}] per ${ticket.deviceModel || 'il tuo dispositivo'}.\n` +
+          `In merito a: "${ticket.subject}"\n\n` +
+          `Possiamo approfondire qui: puoi inviarmi una foto del problema o dirmi quando preferisci passare in laboratorio? Grazie!`;
+        return `https://wa.me/${phoneToUse}?text=${encodeURIComponent(msg)}`;
+      }
+
+      return '#';
     },
 
     getConfig() {
@@ -158,7 +336,7 @@
     },
 
     resetToDefaults() {
-      const defaults = window.PIRINA_DEFAULT_DATA || { labConfig: {}, repairs: [] };
+      const defaults = window.PIRINA_DEFAULT_DATA || { labConfig: {}, repairs: [], tickets: [] };
       saveRawData(defaults);
       return clone(defaults);
     },

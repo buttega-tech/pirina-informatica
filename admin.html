@@ -74,6 +74,61 @@
         <div class="kpi-val" id="kpi-revenue">€0</div>
         <span class="kpi-sub">Valore stimato schede aperte</span>
       </div>
+
+      <div class="kpi-card rose">
+        <div class="kpi-top">
+          <span>Ticket Assistenza</span>
+          <span class="kpi-icon">🎫</span>
+        </div>
+        <div class="kpi-val" id="kpi-tickets">0</div>
+        <span class="kpi-sub" id="kpi-tickets-sub">0 aperti da gestire</span>
+      </div>
+    </div>
+
+    <!-- Support Tickets & WhatsApp Desk Box -->
+    <div class="content-box" style="margin-bottom: 24px;">
+      <div class="box-header-flex">
+        <div class="box-header-title">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <h2 style="font-size: 16px; font-weight: 700; color: var(--adm-text);">🎫 Richieste di Supporto Web & WhatsApp Handoff</h2>
+            <span class="ticket-count-badge" id="ticket-badge-count">0 Aperti</span>
+          </div>
+          <p style="font-size: 12px; color: var(--adm-muted); margin-top: 2px;">Richieste inviate dal sito pirinainformatica.it · Risposta diretta WhatsApp e conversione in riparazione a banco</p>
+        </div>
+
+        <div class="toolbar-ticket-filters">
+          <div class="filter-tabs ticket-tabs">
+            <button class="f-tab-t active" data-tfilter="all">Tutti</button>
+            <button class="f-tab-t" data-tfilter="aperto">Aperti</button>
+            <button class="f-tab-t" data-tfilter="in_gestione">In Gestione</button>
+            <button class="f-tab-t" data-tfilter="convertito">Convertiti</button>
+            <button class="f-tab-t" data-tfilter="risolto">Risolti</button>
+          </div>
+          <div class="search-field" style="max-width: 260px;">
+            <span>🔍</span>
+            <input type="text" id="ticket-search-input" placeholder="Cerca ticket, cliente, guasto...">
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="adm-table">
+          <thead>
+            <tr>
+              <th>Ticket ID</th>
+              <th>Data & Urgenza</th>
+              <th>Cliente & Telefono</th>
+              <th>Dispositivo & Modello</th>
+              <th>Oggetto & Dettagli Richiesta</th>
+              <th>Stato Supporto</th>
+              <th>Azioni Tecniche Desk</th>
+            </tr>
+          </thead>
+          <tbody id="tickets-table-body">
+            <!-- Populated via admin.js -->
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- Main Content Box: Repairs Table -->

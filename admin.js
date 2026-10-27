@@ -11,15 +11,29 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentFilter = 'all';
   let searchQuery = '';
   let activeModalRepair = null;
+  let activeModalTarget = null; // { type: 'repair'|'ticket', phone: '...', id: '...' }
+
+  // Support Tickets State
+  let currentTicketFilter = 'all';
+  let ticketSearchQuery = '';
 
   // DOM Elements
   const kpiTotal = document.getElementById('kpi-total');
   const kpiActive = document.getElementById('kpi-active');
   const kpiReady = document.getElementById('kpi-ready');
   const kpiRevenue = document.getElementById('kpi-revenue');
+  const kpiTickets = document.getElementById('kpi-tickets');
+  const kpiTicketsSub = document.getElementById('kpi-tickets-sub');
+  const ticketBadgeCount = document.getElementById('ticket-badge-count');
+
   const repairsTableBody = document.getElementById('repairs-table-body');
   const searchInput = document.getElementById('dash-search-input');
   const filterTabs = document.querySelectorAll('.f-tab');
+
+  const ticketsTableBody = document.getElementById('tickets-table-body');
+  const ticketSearchInput = document.getElementById('ticket-search-input');
+  const ticketFilterTabs = document.querySelectorAll('.f-tab-t');
+
   const clockEl = document.getElementById('dash-clock');
 
   // Modals
@@ -62,6 +76,135 @@ document.addEventListener('DOMContentLoaded', () => {
     kpiActive.textContent = stats.activeCount;
     kpiReady.textContent = stats.readyCount;
     kpiRevenue.textContent = `€${stats.totalEstimatedRevenue}`;
+
+    if (kpiTickets) kpiTickets.textContent = stats.openTicketsCount;
+    if (kpiTicketsSub) kpiTicketsSub.textContent = `${stats.totalTickets} totali (${stats.openTicketsCount} aperti)`;
+    if (ticketBadgeCount) ticketBadgeCount.textContent = `${stats.openTicketsCount} Aperti`;
+  }
+
+  // -------------------------------------------------------------
+  // Ticket Helpers & Render Tickets Table
+  // -------------------------------------------------------------
+  function formatDateTime(isoStr) {
+    if (!isoStr) return '--';
+    const d = new Date(isoStr);
+    return d.toLocaleDateString('it-IT', { day: '2-digit', month: 'short' }) + ' ' +
+           d.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function getTicketStatusBadge(status, convertedRepairCode) {
+    const map = {
+      'aperto': { name: 'Aperto', cls: 'aperto', icon: '⚡' },
+      'in_gestione': { name: 'In Gestione', cls: 'in_gestione', icon: '💬' },
+      'convertito': { name: 'Convertito in Scheda', cls: 'convertito', icon: '⚙️' },
+      'risolto': { name: 'Risolto', cls: 'risolto', icon: '✓' }
+    };
+    const s = map[status] || { name: status, cls: 'aperto', icon: '•' };
+    let extra = '';
+    if (status === 'convertito' && convertedRepairCode) {
+      extra = ` <strong style="font-family: var(--font-mono); color: var(--adm-cyan);">[${convertedRepairCode}]</strong>`;
+    }
+    return `<span class="badge-ticket-status ${s.cls}">${s.icon} ${s.name}${extra}</span>`;
+  }
+
+  function getUrgencyBadge(urgency) {
+    const u = (urgency || 'normale').toLowerCase();
+    const labels = {
+      'alta': 'Urgente',
+      'normale': 'Normale',
+      'preventivo': 'Preventivo'
+    };
+    return `<span class="urgency-pill ${u}">${labels[u] || u}</span>`;
+  }
+
+  function renderTicketsTable() {
+    if (!ticketsTableBody) return;
+    let list = store.getAllTickets();
+
+    // Filter by tab
+    if (currentTicketFilter !== 'all') {
+      list = list.filter(t => t.status === currentTicketFilter);
+    }
+
+    // Filter by search query
+    if (ticketSearchQuery) {
+      const q = ticketSearchQuery.toLowerCase();
+      list = list.filter(t =>
+        (t.ticketRef && t.ticketRef.toLowerCase().includes(q)) ||
+        (t.customerName && t.customerName.toLowerCase().includes(q)) ||
+        (t.customerPhone && t.customerPhone.toLowerCase().includes(q)) ||
+        (t.deviceModel && t.deviceModel.toLowerCase().includes(q)) ||
+        (t.subject && t.subject.toLowerCase().includes(q)) ||
+        (t.message && t.message.toLowerCase().includes(q))
+      );
+    }
+
+    if (list.length === 0) {
+      ticketsTableBody.innerHTML = `
+        <tr>
+          <td colspan="7" style="text-align: center; padding: 36px; color: var(--adm-muted);">
+            Nessuna richiesta di supporto trovata con i filtri correnti.
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    ticketsTableBody.innerHTML = list.map(t => {
+      const isConverted = (t.status === 'convertito');
+      const convertBtn = !isConverted
+        ? `<button class="btn-ticket-convert" title="Converti richiesta in scheda di riparazione laboratorio" onclick="window.convertTicket('${t.id}')">⚙️ Converti a Banco</button>`
+        : `<span style="font-size: 11px; color: var(--adm-purple); font-family: var(--font-mono); font-weight: 700;">Scheda ${t.convertedRepairCode}</span>`;
+
+      return `
+        <tr data-ticket-id="${t.id}">
+          <td>
+            <span class="badge-ticket-ref">${t.ticketRef}</span>
+          </td>
+          <td>
+            <div style="font-size: 12px; color: var(--adm-text); font-weight: 500;">
+              ${formatDateTime(t.createdAt)}
+            </div>
+            ${getUrgencyBadge(t.urgency)}
+          </td>
+          <td>
+            <strong>${escapeHtml(t.customerName)}</strong>
+            <div style="font-size: 12px; color: var(--adm-muted);">
+              <a href="tel:${t.customerPhone}" style="color: var(--adm-muted); text-decoration: none;">${t.customerPhone}</a>
+            </div>
+          </td>
+          <td>
+            <strong style="color: var(--adm-text); font-size: 13px;">${escapeHtml(t.deviceModel)}</strong>
+            <div style="font-size: 11px; color: var(--adm-dim);">${escapeHtml(t.deviceType)}</div>
+          </td>
+          <td>
+            <div style="font-weight: 600; font-size: 13px; color: var(--adm-cyan); margin-bottom: 2px;">
+              ${escapeHtml(t.subject)}
+            </div>
+            <div style="font-size: 12px; color: var(--adm-muted); max-width: 320px; line-height: 1.35;" title="${escapeHtml(t.message)}">
+              ${escapeHtml(t.message)}
+            </div>
+          </td>
+          <td>
+            ${getTicketStatusBadge(t.status, t.convertedRepairCode)}
+          </td>
+          <td>
+            <div class="action-cell">
+              <button class="btn-ticket-wa" title="Rispondi al cliente su WhatsApp" onclick="window.openTicketWa('${t.id}')">
+                💬 WhatsApp
+              </button>
+              ${convertBtn}
+              <button class="icon-btn" title="Avanza stato ticket (Aperto → In Gestione → Risolto)" onclick="window.advanceTicket('${t.id}')">
+                ⏩
+              </button>
+              <button class="icon-btn del" title="Elimina ticket" onclick="window.deleteTicketConfirm('${t.id}')">
+                🗑️
+              </button>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join('');
   }
 
   // -------------------------------------------------------------
@@ -165,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // -------------------------------------------------------------
-  // Filter tabs & Search
+  // Filter tabs & Search (Repairs)
   // -------------------------------------------------------------
   filterTabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -182,7 +325,92 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // -------------------------------------------------------------
-  // Global Actions for Table Rows
+  // Filter tabs & Search (Tickets)
+  // -------------------------------------------------------------
+  ticketFilterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      ticketFilterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentTicketFilter = tab.dataset.tfilter;
+      renderTicketsTable();
+    });
+  });
+
+  if (ticketSearchInput) {
+    ticketSearchInput.addEventListener('input', (e) => {
+      ticketSearchQuery = e.target.value.trim();
+      renderTicketsTable();
+    });
+  }
+
+  // -------------------------------------------------------------
+  // Global Actions for Tickets Desk
+  // -------------------------------------------------------------
+  window.openTicketWa = function(id) {
+    const ticket = store.getTicketById(id);
+    if (!ticket) return;
+
+    activeModalTarget = { type: 'ticket', phone: ticket.customerPhone, id: ticket.id };
+    const url = store.buildWhatsAppTicketUrl(ticket, 'admin');
+
+    // Decode message for preview
+    const urlObj = new URL(url);
+    const msg = urlObj.searchParams.get('text') || '';
+    waTextarea.value = msg;
+
+    // Se il ticket era appena aperto, portalo 'in_gestione'
+    if (ticket.status === 'aperto') {
+      store.updateTicketStatus(id, 'in_gestione');
+      renderMetrics();
+      renderTicketsTable();
+    }
+
+    waModal.classList.add('open');
+  };
+
+  window.convertTicket = function(id) {
+    const ticket = store.getTicketById(id);
+    if (!ticket) return;
+
+    if (confirm(`Vuoi convertire la richiesta di supporto ${ticket.ticketRef} (${ticket.customerName} — ${ticket.deviceModel}) in una scheda di riparazione a banco?`)) {
+      const res = store.convertTicketToRepair(id);
+      if (res && res.repair) {
+        alert(`✅ Richiesta convertita con successo!\nCreata Scheda Riparazione ${res.repair.code} per ${res.repair.customerName}.`);
+        renderMetrics();
+        renderTicketsTable();
+        renderTable();
+      }
+    }
+  };
+
+  window.advanceTicket = function(id) {
+    const ticket = store.getTicketById(id);
+    if (!ticket) return;
+
+    const flow = {
+      'aperto': 'in_gestione',
+      'in_gestione': 'risolto',
+      'convertito': 'risolto',
+      'risolto': 'aperto'
+    };
+    const next = flow[ticket.status] || 'in_gestione';
+    store.updateTicketStatus(id, next);
+    renderMetrics();
+    renderTicketsTable();
+  };
+
+  window.deleteTicketConfirm = function(id) {
+    const ticket = store.getTicketById(id);
+    if (!ticket) return;
+    if (confirm(`Sei sicuro di voler eliminare la richiesta di supporto ${ticket.ticketRef} di ${ticket.customerName}?`)) {
+      store.deleteTicket(id);
+      renderMetrics();
+      renderTicketsTable();
+    }
+  };
+
+  // -------------------------------------------------------------
+  // Global Actions for Table Rows (Repairs)
   // -------------------------------------------------------------
   window.advanceRepairStep = function(id) {
     const repair = store.getRepairById(id);
@@ -204,6 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!repair) return;
 
     activeModalRepair = repair;
+    activeModalTarget = { type: 'repair', phone: repair.customerPhone, id: repair.id };
     const url = store.buildWhatsAppNotificationUrl(repair);
     currentWaUrl = url;
 
@@ -216,8 +445,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   waSendBtn.addEventListener('click', () => {
-    if (activeModalRepair) {
-      const cleanPhone = (activeModalRepair.customerPhone || '').replace(/[^\d+]/g, '');
+    const target = activeModalTarget || (activeModalRepair ? { phone: activeModalRepair.customerPhone } : null);
+    if (target && target.phone) {
+      const cleanPhone = (target.phone || '').replace(/[^\d+]/g, '');
       const phoneToUse = cleanPhone.startsWith('+') ? cleanPhone.slice(1) : (cleanPhone.startsWith('39') ? cleanPhone : '39' + cleanPhone);
       const finalMsg = encodeURIComponent(waTextarea.value);
       window.open(`https://wa.me/${phoneToUse}?text=${finalMsg}`, '_blank');
@@ -321,6 +551,7 @@ document.addEventListener('DOMContentLoaded', () => {
         store.resetToDefaults();
         renderMetrics();
         renderTable();
+        renderTicketsTable();
         alert('Dati ripristinati allo stato iniziale hardcoded!');
       }
     });
@@ -336,9 +567,11 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('pirina:store-updated', () => {
     renderMetrics();
     renderTable();
+    renderTicketsTable();
   });
 
   // Initial render
   renderMetrics();
   renderTable();
+  renderTicketsTable();
 });

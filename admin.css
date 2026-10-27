@@ -211,6 +211,7 @@ body {
 .kpi-card.emerald .kpi-val { color: var(--adm-emerald); }
 .kpi-card.amber .kpi-val { color: var(--adm-amber); }
 .kpi-card.purple .kpi-val { color: var(--adm-purple); }
+.kpi-card.rose .kpi-val { color: var(--adm-rose); }
 
 /* Main Section Card */
 .content-box {
@@ -397,6 +398,176 @@ body {
 .icon-btn.del:hover {
   background: var(--adm-rose);
   border-color: var(--adm-rose);
+  color: #fff;
+}
+
+/* -------------------------------------------------------------
+   Support Tickets Section & Badges
+   ------------------------------------------------------------- */
+.box-header-flex {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--adm-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ticket-count-badge {
+  background: rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.4);
+  color: var(--adm-rose);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+}
+
+.toolbar-ticket-filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.f-tab-t {
+  background: none;
+  border: none;
+  color: var(--adm-muted);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: var(--font-sans);
+}
+
+.f-tab-t:hover {
+  color: var(--adm-text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.f-tab-t.active {
+  color: var(--adm-cyan);
+  background: rgba(0, 229, 255, 0.12);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+.badge-ticket-ref {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(244, 63, 94, 0.1);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  color: var(--adm-rose);
+}
+
+.badge-ticket-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.badge-ticket-status.aperto {
+  background: rgba(0, 229, 255, 0.15);
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  color: var(--adm-cyan);
+}
+
+.badge-ticket-status.in_gestione {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: var(--adm-amber);
+}
+
+.badge-ticket-status.convertito {
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: var(--adm-purple);
+}
+
+.badge-ticket-status.risolto {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: var(--adm-emerald);
+}
+
+.urgency-pill {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.urgency-pill.alta {
+  background: rgba(244, 63, 94, 0.2);
+  color: var(--adm-rose);
+  border: 1px solid rgba(244, 63, 94, 0.4);
+}
+
+.urgency-pill.normale {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--adm-blue);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.urgency-pill.preventivo {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--adm-amber);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.btn-ticket-wa {
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.4);
+  color: #25d366;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-ticket-wa:hover {
+  background: #25d366;
+  color: #032110;
+}
+
+.btn-ticket-convert {
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: var(--adm-purple);
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-ticket-convert:hover {
+  background: var(--adm-purple);
   color: #fff;
 }
 

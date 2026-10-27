@@ -173,5 +173,53 @@ window.PIRINA_DEFAULT_DATA = {
       targetDeliveryDate: "2026-10-25T18:00:00",
       internalNotes: "Metallo liquido riposizionato con barriera sigillante in schiuma. Test Ratchet & Clank 2h ok."
     }
+  ],
+
+  tickets: [
+    {
+      id: "tick-101",
+      ticketRef: "TICK-101",
+      customerName: "Roberto Cossu",
+      customerPhone: "+39 340 987 6543",
+      deviceType: "MacBook",
+      deviceModel: "MacBook Pro 13\" (2020)",
+      subject: "Infiltrazione accidentale di caffè sulla tastiera",
+      message: "Stamattina è caduta mezza tazzina di caffè sul lato destro. L'ho spento subito e non l'ho più riacceso. Si può fare pulizia ultrasuoni e recuperare i dati della tesi?",
+      urgency: "alta",
+      status: "aperto", // 'aperto' | 'in_gestione' | 'risolto' | 'convertito'
+      createdAt: "2026-10-27T08:15:00",
+      convertedRepairCode: null,
+      channel: "web+whatsapp"
+    },
+    {
+      id: "tick-102",
+      ticketRef: "TICK-102",
+      customerName: "Maria Giovanna Addis",
+      customerPhone: "+39 349 876 5432",
+      deviceType: "Tablet",
+      deviceModel: "iPad Air 4th Gen",
+      subject: "Preventivo sostituzione batteria che dura meno di 2 ore",
+      message: "La batteria scende a zero all'improvviso appena arriva al 20%. Vorrei sapere il costo e le tempistiche di sostituzione in sede a Olbia.",
+      urgency: "normale",
+      status: "in_gestione",
+      createdAt: "2026-10-26T17:40:00",
+      convertedRepairCode: null,
+      channel: "web+whatsapp"
+    },
+    {
+      id: "tick-103",
+      ticketRef: "TICK-103",
+      customerName: "Cristian Pinna",
+      customerPhone: "+39 333 112 2334",
+      deviceType: "PC Desktop",
+      deviceModel: "PC Gaming Custom (RTX 4070)",
+      subject: "Consulenza assemblaggio e cablaggio cable management",
+      message: "Ho ordinato i componenti della nuova build e vorrei far fare l'assemblaggio completo a regola d'arte, montaggio AIO e collaudo termico.",
+      urgency: "bassa",
+      status: "risolto",
+      createdAt: "2026-10-25T11:20:00",
+      convertedRepairCode: null,
+      channel: "web+whatsapp"
+    }
   ]
 };

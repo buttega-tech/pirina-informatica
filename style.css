@@ -1109,8 +1109,353 @@ body {
   line-height: 1.5;
 }
 
+/* -------------------------------------------------------------
+   Customer Support & Ticketing Section
+   ------------------------------------------------------------- */
+.support-section {
+  position: relative;
+}
+
+.support-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.support-form-card,
+.support-info-card {
+  padding: 32px;
+  border-radius: 20px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.card-header-simple {
+  margin-bottom: 24px;
+}
+
+.support-card-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  background: rgba(0, 229, 255, 0.1);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+
+.card-header-simple h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.card-sub {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.support-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.field-group input,
+.field-group select,
+.field-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(13, 19, 33, 0.8);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  transition: var(--transition);
+  outline: none;
+}
+
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.15);
+  background: rgba(13, 19, 33, 0.95);
+}
+
+.field-group select {
+  cursor: pointer;
+}
+
+.field-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.support-form-checkbox {
+  margin: 6px 0 10px 0;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text-dim);
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.checkbox-label input[type="checkbox"] {
+  margin-top: 2px;
+  accent-color: var(--accent-cyan);
+}
+
+/* Support Side Panel */
+.support-live-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: var(--accent-emerald);
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.support-info-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.support-text {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 22px;
+}
+
+.support-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.perk-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.perk-icon {
+  font-size: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.perk-item strong {
+  display: block;
+  font-size: 14px;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.perk-item p {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.perk-item code {
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+  background: rgba(0, 229, 255, 0.08);
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+
+.direct-wa-box {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.direct-wa-box span {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* Success Ticket Card */
+.ticket-success-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.success-icon-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid var(--accent-emerald);
+  color: var(--accent-emerald);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.tag-success {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: var(--accent-emerald);
+}
+
+.ticket-card-display {
+  background: rgba(10, 14, 23, 0.9);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0, 229, 255, 0.08);
+}
+
+.ticket-header-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.ticket-badge-pill {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  letter-spacing: 0.08em;
+  background: rgba(0, 229, 255, 0.1);
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  padding: 4px 12px;
+  border-radius: 8px;
+}
+
+.ticket-date-meta {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.ticket-body-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ticket-body-meta .meta-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: 13px;
+  gap: 12px;
+}
+
+.ticket-body-meta .meta-label {
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+.ticket-body-meta .meta-value {
+  color: var(--text-main);
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 220px;
+}
+
+.ticket-whatsapp-action {
+  margin-bottom: 16px;
+}
+
+.wa-action-instruction {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.pulse-glow {
+  animation: pulseGlow 2.5s infinite;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.ticket-footer-actions {
+  margin-top: 12px;
+}
+
 /* Responsive Breakpoints */
 @media (max-width: 900px) {
+  .support-grid {
+    grid-template-columns: 1fr;
+  }
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -1127,6 +1472,13 @@ body {
 }
 
 @media (max-width: 600px) {
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+  .support-form-card,
+  .support-info-card {
+    padding: 20px;
+  }
   .hero-title {
     font-size: 32px;
   }

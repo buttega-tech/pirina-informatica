@@ -38,8 +38,9 @@
         <a href="#diagnostica" class="nav-link">Diagnosi Guasti</a>
         <a href="#servizi" class="nav-link">Laboratorio</a>
         <a href="#tracker" class="nav-link">Stato Riparazione</a>
+        <a href="#supporto" class="nav-link" style="color: var(--accent-cyan); font-weight: 600;">Assistenza & Ticket</a>
         <a href="#contatti" class="nav-link">Dove Siamo</a>
-        <a href="admin.html" class="nav-link" style="color: var(--accent-cyan); font-weight: 600;">Area Desk</a>
+        <a href="admin.html" class="nav-link" style="color: var(--accent-purple); font-weight: 600;">Area Desk</a>
       </nav>
 
       <div class="nav-actions">
@@ -331,6 +332,187 @@
             <li>Installazione pulita Windows 11 / macOS</li>
             <li>Recupero file da memorie corrotte o formattate</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Support & WhatsApp Handoff Section -->
+  <section class="section support-section" id="supporto">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="badge-tag">ASSISTENZA DIRETTA & TICKET RAPIDO</span>
+        <h2 class="section-title">Hai bisogno di supporto tecnico immediato?</h2>
+        <p class="section-desc">Apri una richiesta ufficiale al banco di Via Roma 99: riceverai un identificativo <strong>Ticket univoco</strong> e potrai proseguire la chat direttamente su WhatsApp con Andrea Pirina.</p>
+      </div>
+
+      <div class="support-grid">
+        <!-- Ticket Submission Form -->
+        <div class="support-form-card glass-panel" id="support-form-container">
+          <div class="card-header-simple">
+            <span class="support-card-badge">DESK ONLINE</span>
+            <h3>Compila la scheda di richiesta</h3>
+            <p class="card-sub">Inserisci i dati essenziali: riceverai riscontro immediato con tracciamento scheda.</p>
+          </div>
+
+          <form id="support-ticket-form" class="support-form">
+            <div class="form-row-2">
+              <div class="field-group">
+                <label for="supp-name">Nome e Cognome *</label>
+                <input type="text" id="supp-name" required placeholder="es. Marco Rossi" autocomplete="name">
+              </div>
+              <div class="field-group">
+                <label for="supp-phone">Telefono / WhatsApp *</label>
+                <input type="tel" id="supp-phone" required placeholder="es. +39 340 123 4567" autocomplete="tel">
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="field-group">
+                <label for="supp-device-type">Tipologia Dispositivo *</label>
+                <select id="supp-device-type" required>
+                  <option value="Smartphone">Smartphone (iPhone / Android)</option>
+                  <option value="Tablet">Tablet / iPad</option>
+                  <option value="Notebook">Notebook Windows</option>
+                  <option value="MacBook">MacBook / Mac</option>
+                  <option value="PC Desktop">PC Fisso / Workstation</option>
+                  <option value="Recupero Dati">Hard Disk / SSD / Recupero Dati</option>
+                  <option value="Console">Console Gaming (PS5, Xbox, Switch)</option>
+                  <option value="Altro">Altro apparato elettronico</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label for="supp-device-model">Marca & Modello Esatto *</label>
+                <input type="text" id="supp-device-model" required placeholder="es. iPhone 14 Pro, ThinkPad T14, WD 2TB">
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="field-group">
+                <label for="supp-urgency">Priorità Richiesta</label>
+                <select id="supp-urgency">
+                  <option value="normale">Normale (entro 24-48 ore lavorative)</option>
+                  <option value="alta">Alta / Urgente (lavoro bloccato / emergenza)</option>
+                  <option value="preventivo">Richiesta preventivo gratuito</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label for="supp-subject">Oggetto del Problema *</label>
+                <input type="text" id="supp-subject" required placeholder="es. Vetro rotto, spegnimento improvviso, caduta acqua...">
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="supp-message">Dettagli Guasto & Sintomi Rilevati *</label>
+              <textarea id="supp-message" rows="3" required placeholder="Descrivi cosa è successo: se il dispositivo si accende, se fa rumori strani, se hai già tentato il ripristino..."></textarea>
+            </div>
+
+            <div class="support-form-checkbox">
+              <label class="checkbox-label">
+                <input type="checkbox" id="supp-privacy" required checked>
+                <span>Autorizzo Pirina Informatica al trattamento dei dati per la gestione dell'assistenza tecnica (Privacy GDPR).</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg" id="supp-submit-btn">
+              <span>⚡ Invia Scheda & Genera Ticket</span>
+              <span class="arrow">→</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Support Info & Ticket Confirmation Panel -->
+        <div class="support-info-card glass-panel" id="support-side-panel">
+          <!-- Initial Welcome View -->
+          <div id="support-initial-view">
+            <div class="support-live-banner">
+              <span class="pulse-dot"></span>
+              <strong>Andrea Pirina · Presidio Tecnico Diretto</strong>
+            </div>
+
+            <h3>Assistenza Diretta & Tracciata</h3>
+            <p class="support-text">A differenza dei centri generici, da <strong>Pirina Informatica</strong> parli direttamente con il tecnico che aprirà ed esaminerà il tuo apparato.</p>
+
+            <div class="support-perks">
+              <div class="perk-item">
+                <span class="perk-icon">🎫</span>
+                <div>
+                  <strong>Ticket Univoco Immediato</strong>
+                  <p>Ricevi subito il tuo codice di riferimento (es. <code>TICK-104</code>) sincronizzato con il desk operativo di laboratorio.</p>
+                </div>
+              </div>
+
+              <div class="perk-item">
+                <span class="perk-icon">💬</span>
+                <div>
+                  <strong>Continuazione della Chat su WhatsApp</strong>
+                  <p>Il messaggio verso il nostro canale <code>+39 329 724 5039</code> partirà già pre-compilato con codice ticket e dati del guasto.</p>
+                </div>
+              </div>
+
+              <div class="perk-item">
+                <span class="perk-icon">🔬</span>
+                <div>
+                  <strong>Conversione Diretta al Banco</strong>
+                  <p>Quando consegnerai il dispositivo in Via Roma 99, il ticket verrà convertito in riparazione in 1 click senza dover ripetere la spiegazione.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="direct-wa-box">
+              <span>Vuoi contattare direttamente il banco senza compilare?</span>
+              <a href="https://wa.me/393297245039?text=Buongiorno%20Pirina%20Informatica,%20vorrei%20informazioni%20per%20un'assistenza%20su%20un%20dispositivo." target="_blank" rel="noopener" class="btn btn-whatsapp btn-block">
+                <span class="wa-icon">💬</span> Scrivi a Pirina Informatica (+39 329 724 5039)
+              </a>
+            </div>
+          </div>
+
+          <!-- Dynamic Ticket Confirmation View (Revealed after form submit) -->
+          <div id="support-success-view" style="display: none;">
+            <div class="ticket-success-header">
+              <div class="success-icon-badge">✓</div>
+              <div>
+                <span class="badge-tag tag-success">TICKET APERTO CON SUCCESSO</span>
+                <h3 style="margin-top: 4px; font-size: 18px;">Richiesta Registrata a Sistema</h3>
+              </div>
+            </div>
+
+            <div class="ticket-card-display">
+              <div class="ticket-header-meta">
+                <span class="ticket-badge-pill" id="ticket-pill-ref">TICK-104</span>
+                <span class="ticket-date-meta" id="ticket-pill-date">Oggi</span>
+              </div>
+              <div class="ticket-body-meta">
+                <div class="meta-row">
+                  <span class="meta-label">Cliente:</span>
+                  <strong class="meta-value" id="ticket-display-name">--</strong>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Dispositivo:</span>
+                  <strong class="meta-value" id="ticket-display-device">--</strong>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Oggetto:</span>
+                  <span class="meta-value" id="ticket-display-subject">--</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ticket-whatsapp-action">
+              <p class="wa-action-instruction">
+                👉 <strong>Passaggio finale:</strong> Clicca sul pulsante qui sotto per aprire WhatsApp con il ticket già compilato e inviarlo direttamente ad Andrea Pirina:
+              </p>
+              <a href="#" id="ticket-whatsapp-btn" target="_blank" rel="noopener" class="btn btn-whatsapp btn-block btn-lg pulse-glow">
+                <span class="wa-icon">💬</span> Continua la discussione su WhatsApp
+              </a>
+            </div>
+
+            <div class="ticket-footer-actions">
+              <button type="button" id="ticket-new-btn" class="btn btn-outline btn-block">
+                ➕ Invia un'altra richiesta di supporto
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -377,4 +377,80 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // -------------------------------------------------------------
+  // 4. Customer Support Ticketing & WhatsApp Handoff
+  // -------------------------------------------------------------
+  const supportTicketForm = document.getElementById('support-ticket-form');
+  const supportInitialView = document.getElementById('support-initial-view');
+  const supportSuccessView = document.getElementById('support-success-view');
+  const ticketPillRef = document.getElementById('ticket-pill-ref');
+  const ticketPillDate = document.getElementById('ticket-pill-date');
+  const ticketDisplayName = document.getElementById('ticket-display-name');
+  const ticketDisplayDevice = document.getElementById('ticket-display-device');
+  const ticketDisplaySubject = document.getElementById('ticket-display-subject');
+  const ticketWhatsAppBtn = document.getElementById('ticket-whatsapp-btn');
+  const ticketNewBtn = document.getElementById('ticket-new-btn');
+
+  if (supportTicketForm && window.PirinaStore) {
+    supportTicketForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('supp-name').value.trim();
+      const phone = document.getElementById('supp-phone').value.trim();
+      const deviceType = document.getElementById('supp-device-type').value;
+      const deviceModel = document.getElementById('supp-device-model').value.trim();
+      const urgency = document.getElementById('supp-urgency').value;
+      const subject = document.getElementById('supp-subject').value.trim();
+      const message = document.getElementById('supp-message').value.trim();
+
+      if (!name || !phone || !deviceModel || !subject || !message) {
+        alert('Compila tutti i campi obbligatori contrassegnati con * per registrare la richiesta.');
+        return;
+      }
+
+      // Crea il ticket nel PirinaStore
+      const newTicket = window.PirinaStore.createTicket({
+        customerName: name,
+        customerPhone: phone,
+        deviceType,
+        deviceModel,
+        urgency,
+        subject,
+        message
+      });
+
+      // Genera il link WhatsApp bilaterale per il cliente
+      const waUrl = window.PirinaStore.buildWhatsAppTicketUrl(newTicket, 'client');
+
+      // Popola i dati nella card di conferma
+      if (ticketPillRef) ticketPillRef.textContent = newTicket.ticketRef;
+      if (ticketPillDate) ticketPillDate.textContent = 'Registrato adesso';
+      if (ticketDisplayName) ticketDisplayName.textContent = newTicket.customerName;
+      if (ticketDisplayDevice) ticketDisplayDevice.textContent = `${newTicket.deviceType} · ${newTicket.deviceModel}`;
+      if (ticketDisplaySubject) ticketDisplaySubject.textContent = newTicket.subject;
+      if (ticketWhatsAppBtn) ticketWhatsAppBtn.href = waUrl;
+
+      // Mostra la vista di conferma e nascondi quella iniziale
+      if (supportInitialView) supportInitialView.style.display = 'none';
+      if (supportSuccessView) {
+        supportSuccessView.style.display = 'block';
+        supportSuccessView.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      // Reset form
+      supportTicketForm.reset();
+    });
+
+    if (ticketNewBtn) {
+      ticketNewBtn.addEventListener('click', () => {
+        if (supportSuccessView) supportSuccessView.style.display = 'none';
+        if (supportInitialView) {
+          supportInitialView.style.display = 'block';
+          const nameInput = document.getElementById('supp-name');
+          if (nameInput) nameInput.focus();
+        }
+      });
+    }
+  }
 });
