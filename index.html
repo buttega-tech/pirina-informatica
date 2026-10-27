@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Pirina Informatica · Laboratorio Assistenza & Device Clinic | Olbia</title>
+  <meta name="description" content="Laboratorio specializzato a Olbia in riparazione smartphone, tablet, PC e Mac. Diagnosi rapida, sostituzione schermi, batterie, microsaldature e recupero dati in Via Roma 99.">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pirina Informatica · Centro Assistenza & Riparazioni Tech a Olbia">
+  <meta property="og:description" content="Riparazione express smartphone, PC, notebook e recupero dati. Diagnosi trasparente in Via Roma 99, Olbia.">
+  <meta name="theme-color" content="#0a0e17">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Background Ambient Glow -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo">
+        <span class="logo-icon">⚡</span>
+        <div class="logo-text">
+          <span class="brand-name">PIRINA</span>
+          <span class="brand-sub">INFORMATICA · OLBIA</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#diagnostica" class="nav-link">Diagnosi Guasti</a>
+        <a href="#servizi" class="nav-link">Laboratorio</a>
+        <a href="#tracker" class="nav-link">Stato Riparazione</a>
+        <a href="#contatti" class="nav-link">Dove Siamo</a>
+        <a href="admin.html" class="nav-link" style="color: var(--accent-cyan); font-weight: 600;">Area Desk</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="tel:+393297245039" class="btn btn-outline nav-phone">
+          <span class="icon">📞</span> +39 329 724 5039
+        </a>
+        <a href="#diagnostica" class="btn btn-primary">Richiedi Diagnosi</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="status-pill">
+          <span class="pulse-dot"></span>
+          <span>Laboratorio Operativo · Olbia, Via Roma 99</span>
+        </div>
+        
+        <h1 class="hero-title">
+          Rigeneriamo la tua tecnologia con <span class="gradient-text">precisione chirurgica.</span>
+        </h1>
+        
+        <p class="hero-desc">
+          Non un semplice negozio: un <strong>laboratorio specialistico</strong> per la diagnosi e riparazione di smartphone, iPhone, PC desktop, notebook e MacBook. Ricambi ad alta fedeltà, tempi certi e zero perdita dati.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#diagnostica" class="btn btn-primary btn-lg">
+            <span>Configura Intervento</span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="https://wa.me/393297245039?text=Buongiorno%20Pirina%20Informatica,%20vorrei%20informazioni%20per%20un'assistenza%20su%20un%20dispositivo." target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg">
+            <span class="wa-icon">💬</span> WhatsApp Rapido
+          </a>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric-item">
+            <span class="metric-num">30'</span>
+            <span class="metric-label">Diagnosi Express</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-num">98.4%</span>
+            <span class="metric-label">Tasso Ripristino</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-num">100%</span>
+            <span class="metric-label">Privacy Garantita</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual: Tech Terminal Card -->
+      <div class="hero-visual">
+        <div class="terminal-card glass-panel">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="terminal-title">lab-bench-diagnostics.sys</span>
+            <span class="terminal-badge">LIVE LAB</span>
+          </div>
+          
+          <div class="terminal-body">
+            <div class="code-line"><span class="code-comment">// Pirina Tech Lab Status</span></div>
+            <div class="code-line"><span class="code-keyword">const</span> workstation = {</div>
+            <div class="code-line indent"><span class="code-prop">location</span>: <span class="code-str">"Via Roma 99, 07026 Olbia"</span>,</div>
+            <div class="code-line indent"><span class="code-prop">specialization</span>: [<span class="code-str">"Microsoldering"</span>, <span class="code-str">"OLED Screen Rebuild"</span>, <span class="code-str">"SSD NVMe Upgrade"</span>, <span class="code-str">"Data Recovery"</span>],</div>
+            <div class="code-line indent"><span class="code-prop">dataSecurity</span>: <span class="code-bool">true</span>, <span class="code-comment">// Nessun reset preventivo</span></div>
+            <div class="code-line indent"><span class="code-prop">turnaround</span>: <span class="code-str">"Express 1-2h on common fixes"</span></div>
+            <div class="code-line">};</div>
+
+            <div class="bench-stats">
+              <div class="stat-badge">
+                <span class="badge-icon">📱</span>
+                <div>
+                  <strong>Smartphone & Tablet</strong>
+                  <small>Display, Batteria, Type-C, FaceID</small>
+                </div>
+              </div>
+              <div class="stat-badge">
+                <span class="badge-icon">💻</span>
+                <div>
+                  <strong>PC, Mac & Notebook</strong>
+                  <small>Rigenerazione, Pasta Termica, GPU, OS</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Diagnostics Tool Section -->
+  <section class="section diagnostics-section" id="diagnostica">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="badge-tag">DIAGNOSTICA INTERATTIVA RAPIDA</span>
+        <h2 class="section-title">Qual è il problema del tuo dispositivo?</h2>
+        <p class="section-desc">Seleziona la categoria e il guasto per scoprire la procedura di laboratorio e generare una richiesta istantanea via WhatsApp.</p>
+      </div>
+
+      <!-- Device Category Tabs -->
+      <div class="category-tabs" id="category-tabs">
+        <button class="cat-tab active" data-category="phone">
+          <span class="tab-icon">📱</span>
+          <span>Smartphone</span>
+        </button>
+        <button class="cat-tab" data-category="laptop">
+          <span class="tab-icon">💻</span>
+          <span>Notebook & Mac</span>
+        </button>
+        <button class="cat-tab" data-category="desktop">
+          <span class="tab-icon">🖥️</span>
+          <span>PC Fisso & Gaming</span>
+        </button>
+        <button class="cat-tab" data-category="data">
+          <span class="tab-icon">💾</span>
+          <span>Recupero Dati</span>
+        </button>
+      </div>
+
+      <!-- Interactive Symptom Matrix & Output -->
+      <div class="diagnostics-grid">
+        <!-- Symptom Selector List -->
+        <div class="symptoms-card glass-panel">
+          <h3 class="panel-subtitle">Sintomi & Interventi Frequenti</h3>
+          <div class="symptom-list" id="symptom-list">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- Dynamic Lab Estimate Card -->
+        <div class="solution-card glass-panel" id="solution-card">
+          <div class="card-badge" id="sol-badge">ANALISI LABORATORIO</div>
+          <h3 class="sol-title" id="sol-title">Seleziona un problema a sinistra</h3>
+          <p class="sol-desc" id="sol-desc">I nostri tecnici eseguono un controllo strumentale per confermare la causa esatta prima di procedere con qualsiasi sostituzione.</p>
+
+          <div class="sol-specs">
+            <div class="spec-row">
+              <span class="spec-label">⏱️ Tempistica media:</span>
+              <strong class="spec-val" id="sol-time">1 - 2 Ore</strong>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">🛡️ Salvaguardia Dati:</span>
+              <strong class="spec-val text-success" id="sol-data">Dati Protetti al 100%</strong>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">⚙️ Componentistica:</span>
+              <strong class="spec-val" id="sol-parts">Ricambi Selezionati & Testati</strong>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">📜 Garanzia Intervento:</span>
+              <strong class="spec-val" id="sol-warranty">Inclusa su ricambio e manodopera</strong>
+            </div>
+          </div>
+
+          <div class="action-footer">
+            <a href="#" class="btn btn-whatsapp btn-block" id="sol-whatsapp-btn" target="_blank" rel="noopener">
+              <span>Richiedi Questo Intervento su WhatsApp</span>
+              <span class="wa-icon">💬</span>
+            </a>
+            <small class="muted-note">Ricevi risposta diretta e stima di disponibilità del ricambio dal nostro banco di lavoro.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Innovative Live Repair Tracker (Mockup Interattivo) -->
+  <section class="section tracker-section" id="tracker">
+    <div class="container">
+      <div class="tracker-wrapper glass-panel">
+        <div class="tracker-header">
+          <div>
+            <span class="badge-tag">TRASPARENZA TOTALE</span>
+            <h2>Hai un dispositivo in riparazione?</h2>
+            <p>Monitora lo stato di lavorazione del tuo apparato in tempo reale.</p>
+          </div>
+          <div class="tracker-input-box">
+            <input type="text" id="tracker-input" placeholder="Codice scheda (es. PIR-842, OLB-109)..." autocomplete="off">
+            <button id="tracker-btn" class="btn btn-primary">Verifica</button>
+          </div>
+        </div>
+
+        <div class="tracker-demo-hint">
+          <span>Codici demo di prova per testare il tracker:</span>
+          <button class="pill-demo" data-code="PIR-842">PIR-842 (In riparazione)</button>
+          <button class="pill-demo" data-code="OLB-109">OLB-109 (Pronto al ritiro)</button>
+        </div>
+
+        <!-- Stepper Component -->
+        <div class="repair-stepper" id="repair-stepper">
+          <div class="step-item completed">
+            <div class="step-circle">✓</div>
+            <div class="step-label">1. Check-In</div>
+            <div class="step-desc">Ricezione apparato & scheda guasto</div>
+          </div>
+          <div class="step-line active"></div>
+          <div class="step-item completed">
+            <div class="step-circle">✓</div>
+            <div class="step-label">2. Diagnostica</div>
+            <div class="step-desc">Test banchi & stima componenti</div>
+          </div>
+          <div class="step-line active"></div>
+          <div class="step-item current">
+            <div class="step-circle">⚙️</div>
+            <div class="step-label">3. Intervento Hardware</div>
+            <div class="step-desc">Lavorazione attiva al microscopio</div>
+          </div>
+          <div class="step-line"></div>
+          <div class="step-item">
+            <div class="step-circle">🔬</div>
+            <div class="step-label">4. Quality Control</div>
+            <div class="step-desc">Stress test termico e funzionale</div>
+          </div>
+          <div class="step-line"></div>
+          <div class="step-item">
+            <div class="step-circle">📦</div>
+            <div class="step-label">5. Pronto al Ritiro</div>
+            <div class="step-desc">Notifica WhatsApp di consegna</div>
+          </div>
+        </div>
+
+        <div class="tracker-info-banner" id="tracker-banner">
+          <span class="banner-status-dot"></span>
+          <span id="tracker-status-text">Scheda <strong>PIR-842</strong>: iPhone 14 Pro — Sostituzione display OLED e sigillatura IP68 in corso al banco 1.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Laboratory Pillars / Services Grid -->
+  <section class="section services-section" id="servizi">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="badge-tag">SERVIZI DI LABORATORIO</span>
+        <h2 class="section-title">Oltre la semplice riparazione</h2>
+        <p class="section-desc">Ci prendiamo cura dell'hardware con strumenti di misurazione professionale, stazioni saldanti controllate e camere bianche per recupero storage.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card glass-panel">
+          <div class="service-icon">🔬</div>
+          <h3>Micro-Saldatura & Schede Madri</h3>
+          <p>Interventi a livello di componenti SMD, riparazione connettori FPC strappati, IC audio, circuiti di ricarica e rigenerazione piste danneggiate.</p>
+          <ul class="service-points">
+            <li>Circuiti di alimentazione e chip ricarica</li>
+            <li>Riparazione connettori USB-C dissaldati</li>
+            <li>Trattamento anti-corrosione da liquidi</li>
+          </ul>
+        </div>
+
+        <div class="service-card glass-panel">
+          <div class="service-icon">⚡</div>
+          <h3>Rigenerazione & Upgrade PC / Mac</h3>
+          <p>Il tuo computer è diventato lento? Trasformiamo qualsiasi macchina grazie a drive NVMe ad alte prestazioni, espansione memoria e pulizia termica profonda.</p>
+          <ul class="service-points">
+            <li>Clonazione 1:1 del vecchio sistema operativo</li>
+            <li>Sostituzione pasta termica (Thermal Grizzly)</li>
+            <li>Ripristino ventole e ottimizzazione flusso d'aria</li>
+          </ul>
+        </div>
+
+        <div class="service-card glass-panel">
+          <div class="service-icon">📱</div>
+          <h3>Display & Batterie Certificati</h3>
+          <p>Sostituzioni express per smartphone di tutte le marche (Apple, Samsung, Xiaomi, Oppo, Pixel) conservando le calibrazioni e il TrueTone originale.</p>
+          <ul class="service-points">
+            <li>Pannelli OLED / AMOLED ad alta risoluzione</li>
+            <li>Batterie a celle fresche a ciclo zero</li>
+            <li>Ripristino guarnizioni originali waterproof</li>
+          </ul>
+        </div>
+
+        <div class="service-card glass-panel">
+          <div class="service-icon">🛡️</div>
+          <h3>Cyber Clean & Ripristino Software</h3>
+          <p>Bonifica da malware aggressivi, spyware e ransomware. Configurazione backup automatici su NAS o Cloud sicuro e ripristino licenze originali.</p>
+          <ul class="service-points">
+            <li>Disinfezione profonda del registro</li>
+            <li>Installazione pulita Windows 11 / macOS</li>
+            <li>Recupero file da memorie corrotte o formattate</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Contact Section -->
+  <section class="section contact-section" id="contatti">
+    <div class="container contact-grid">
+      <div class="contact-info glass-panel">
+        <span class="badge-tag">VIENI A TROVARCI A OLBIA</span>
+        <h2>Laboratorio Tecnico di Via Roma</h2>
+        <p class="contact-lead">Porta il tuo apparato direttamente in sede per una diagnosi accurata e senza impegno. Siamo nel cuore di Olbia.</p>
+
+        <div class="info-blocks">
+          <div class="info-block">
+            <span class="info-icon">📍</span>
+            <div>
+              <strong>Indirizzo</strong>
+              <p>Via Roma, 99 — 07026 Olbia (SS)</p>
+              <small class="muted">Parcheggi disponibili nelle vicinanze</small>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <span class="info-icon">📞</span>
+            <div>
+              <strong>Telefono & Assistenza Diretta</strong>
+              <p><a href="tel:+393297245039" class="highlight-link">+39 329 724 5039</a></p>
+              <small class="muted">Anche per consulenze tecniche urgenti</small>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <span class="info-icon">💬</span>
+            <div>
+              <strong>Canale WhatsApp</strong>
+              <p><a href="https://wa.me/393297245039" target="_blank" rel="noopener" class="highlight-link">Invia messaggio con foto del guasto</a></p>
+              <small class="muted">Risposte rapide durante l'orario di laboratorio</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="location-actions">
+          <a href="https://maps.google.com/?q=Via+Roma+99+07026+Olbia+SS" target="_blank" rel="noopener" class="btn btn-primary">
+            🗺️ Apri su Google Maps
+          </a>
+          <button id="copy-address-btn" class="btn btn-outline">
+            📋 Copia Indirizzo
+          </button>
+        </div>
+      </div>
+
+      <!-- Opening Hours & Map Frame -->
+      <div class="hours-card glass-panel">
+        <h3>Orari di Apertura Laboratorio</h3>
+        <p class="muted">Disponibili per check-in apparati e ritiro riparazioni:</p>
+
+        <div class="schedule-table">
+          <div class="schedule-row">
+            <span>Lunedì – Venerdì</span>
+            <span class="hours-badge">09:00 – 13:00 / 16:00 – 19:30</span>
+          </div>
+          <div class="schedule-row">
+            <span>Sabato</span>
+            <span class="hours-badge">09:00 – 13:00</span>
+          </div>
+          <div class="schedule-row closed">
+            <span>Domenica & Festivi</span>
+            <span class="hours-badge muted">Chiuso</span>
+          </div>
+        </div>
+
+        <div class="map-placeholder">
+          <div class="map-inner">
+            <div class="map-pin">📍</div>
+            <strong>Pirina Informatica</strong>
+            <span>Via Roma 99, Olbia</span>
+            <a href="https://maps.google.com/?q=Via+Roma+99+07026+Olbia+SS" target="_blank" rel="noopener" class="map-link">Visualizza Mappa Satellite →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky Bottom Bar for Mobile -->
+  <aside class="mobile-bottom-bar">
+    <a href="tel:+393297245039" class="m-action phone">
+      <span class="m-icon">📞</span>
+      <span>Chiama</span>
+    </a>
+    <a href="https://wa.me/393297245039" target="_blank" rel="noopener" class="m-action whatsapp">
+      <span class="m-icon">💬</span>
+      <span>WhatsApp</span>
+    </a>
+    <a href="https://maps.google.com/?q=Via+Roma+99+07026+Olbia+SS" target="_blank" rel="noopener" class="m-action map">
+      <span class="m-icon">📍</span>
+      <span>Mappa</span>
+    </a>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <strong>PIRINA INFORMATICA</strong>
+        <p>Laboratorio Tecnico Hardware, Manutenzione e Riparazione Dispositivi a Olbia (Gallura).</p>
+      </div>
+      <div class="footer-meta">
+        <p>Titolare: <em>Pirina Andrea</em> · Sede: Via Roma 99, 07026 Olbia (SS)</p>
+        <p class="copyright">© 2026 Pirina Informatica. Tutti i marchi citati (Apple, Samsung, Microsoft, ecc.) appartengono ai rispettivi proprietari e sono usati a soli fini descrittivi della compatibilità.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="admin.data.js"></script>
+  <script src="admin.store.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

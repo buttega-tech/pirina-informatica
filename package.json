@@ -1,0 +1,20 @@
+{
+  "name": "pirina-informatica",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pirina Informatica · Modern Landing Page & Operational Lab Desk",
+  "scripts": {
+    "dev": "npx serve . -l 3030",
+    "start": "npx serve . -l 3030"
+  },
+  "keywords": [
+    "olbia",
+    "assistenza",
+    "riparazioni",
+    "smartphone",
+    "hardware",
+    "lab-desk"
+  ],
+  "author": "Pirina Informatica",
+  "license": "UNLICENSED"
+}
