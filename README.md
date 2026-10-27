@@ -4,6 +4,9 @@
 > **Alias:** `projects/customers/pirina infomatica`  
 > **Cliente:** Pirina Informatica di Pirina Andrea — Olbia (SS)  
 > **Sede:** Via Roma, 99 — 07026 Olbia (SS) | Tel: +39 329 724 5039  
+> **GitHub Repository:** [https://github.com/buttega-tech/pirina-informatica](https://github.com/buttega-tech/pirina-informatica)  
+> **Live Production URL:** [https://pirina-informatica.vercel.app](https://pirina-informatica.vercel.app)  
+> **Admin Desk URL:** [https://pirina-informatica.vercel.app/admin](https://pirina-informatica.vercel.app/admin)  
 
 ---
 
