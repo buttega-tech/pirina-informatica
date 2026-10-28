@@ -263,6 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const stepLines = document.querySelectorAll('.step-line');
   const demoPills = document.querySelectorAll('.pill-demo');
 
+  if (trackerInput && trackerBtn && trackerStatusText) {
   const demoCases = {
     'PIR-842': {
       title: 'iPhone 14 Pro',
@@ -354,6 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
       updateTrackerUI(code);
     });
   });
+  }
 
   // -------------------------------------------------------------
   // 3. Copy Address to Clipboard with feedback

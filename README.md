@@ -10,6 +10,25 @@
 
 ---
 
+## Integrazione locale delle richieste di supporto
+
+Il servizio Bottega per Pirina comprende sito e raccolta delle richieste:
+il mittente non diventa un account o un cliente Bottega. Il backend locale
+condiviso risiede nel progetto `console-buttega`. Avviandovi `npm run sites:local`,
+il sito è disponibile su `http://127.0.0.1:8786/pirina/` e la casella riservata
+a Pirina su `http://127.0.0.1:8786/support/pirina-informatica`.
+
+Quel percorso carica `support.client.js` al posto dello store dimostrativo:
+salva le richieste sul server, attende conferma e riusa lo stesso riferimento
+in caso di retry. Non collega tracker o laboratorio e non crea una contabilità.
+Il sito statico precedente descritto sotto mantiene il suo comportamento fino
+a una successiva attivazione esplicita. Nessun deployment è implicito.
+
+Il dettaglio dell'avvio, degli account di prova e dell'importazione dei soli
+ticket si trova in `console-buttega/docs/pirina-support-local.md`.
+
+---
+
 ## 1. Architettura della Web App
 
 L'applicazione unisce due ambienti sincronizzati in tempo reale:
