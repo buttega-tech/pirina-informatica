@@ -1109,6 +1109,16 @@ body {
   line-height: 1.5;
 }
 
+.footer-credit {
+  margin-top: 12px;
+}
+
+.footer-credit a {
+  color: var(--accent-cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* -------------------------------------------------------------
    Google Reviews & Trust Section (#recensioni)
    ------------------------------------------------------------- */
