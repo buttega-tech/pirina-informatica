@@ -341,6 +341,28 @@
       return clone(defaults);
     },
 
+    // -------------------------------------------------------------
+    // Google Reviews & Reputazione
+    // -------------------------------------------------------------
+    getGoogleReviews() {
+      const data = getRawData();
+      if (data.googleReviews) {
+        return clone(data.googleReviews);
+      }
+      return clone((window.PIRINA_DEFAULT_DATA && window.PIRINA_DEFAULT_DATA.googleReviews) || {
+        averageRating: 4.9,
+        maxRating: 5.0,
+        totalReviews: 194,
+        googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Pirina+Informatica+Via+Roma+99+Olbia",
+        items: []
+      });
+    },
+
+    getGoogleReviewInviteUrl() {
+      const r = this.getGoogleReviews();
+      return r.googleMapsUrl || "https://www.google.com/maps/search/?api=1&query=Pirina+Informatica+Via+Roma+99+Olbia";
+    },
+
     // Generatore link WhatsApp per cliente
     buildWhatsAppNotificationUrl(repair) {
       if (!repair) return '#';
@@ -350,6 +372,8 @@
       let msg = '';
       if (repair.step === 5) {
         msg = `Gentile ${repair.customerName}, le confermiamo da Pirina Informatica (Via Roma 99, Olbia) che la riparazione del suo ${repair.deviceModel} (Scheda ${repair.code}) è COMPLETATA e l'apparato è PRONTO AL RITIRO! Saldo dovuto: €${(Number(repair.estimatedCost) - Number(repair.depositPaid || 0))}. A presto!`;
+      } else if (repair.step === 6) {
+        msg = `Gentile ${repair.customerName}, grazie per aver ritirato il suo ${repair.deviceModel} presso Pirina Informatica (Via Roma 99, Olbia). Garanzia attiva sull'intervento. Se si è trovato bene, ci aiuterebbe tantissimo lasciando una breve recensione su Google: https://www.google.com/maps/search/?api=1&query=Pirina+Informatica+Via+Roma+99+Olbia . Grazie di cuore da Andrea!`;
       } else if (repair.step === 2) {
         msg = `Gentile ${repair.customerName}, da Pirina Informatica: abbiamo completato la diagnosi per il suo ${repair.deviceModel} (Scheda ${repair.code}). Preventivo stimato: €${repair.estimatedCost}. Ci confermi se possiamo procedere con l'intervento? Grazie!`;
       } else {

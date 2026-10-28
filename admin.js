@@ -543,8 +543,28 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // -------------------------------------------------------------
-  // Reset to Defaults
+  // Reset to Defaults & Copy Google Review Link
   // -------------------------------------------------------------
+  const btnCopyReview = document.getElementById('btn-copy-review-link');
+  if (btnCopyReview) {
+    btnCopyReview.addEventListener('click', () => {
+      const url = store.getGoogleReviewInviteUrl();
+      navigator.clipboard.writeText(url).then(() => {
+        const prev = btnCopyReview.textContent;
+        btnCopyReview.textContent = '✓ Link Recensioni Copiato!';
+        btnCopyReview.style.borderColor = 'var(--adm-emerald)';
+        btnCopyReview.style.color = 'var(--adm-emerald)';
+        setTimeout(() => {
+          btnCopyReview.textContent = prev;
+          btnCopyReview.style.borderColor = '';
+          btnCopyReview.style.color = '';
+        }, 2500);
+      }).catch(() => {
+        alert("Link Google Maps: " + url);
+      });
+    });
+  }
+
   if (btnResetData) {
     btnResetData.addEventListener('click', () => {
       if (confirm('Vuoi ripristinare il dataset hardcoded predefinito di Pirina Informatica? Tutte le modifiche locali non salvate verranno resettate.')) {

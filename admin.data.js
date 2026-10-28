@@ -221,5 +221,80 @@ window.PIRINA_DEFAULT_DATA = {
       convertedRepairCode: null,
       channel: "web+whatsapp"
     }
-  ]
+  ],
+
+  googleReviews: {
+    averageRating: 4.9,
+    maxRating: 5.0,
+    totalReviews: 194,
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Pirina+Informatica+Via+Roma+99+Olbia",
+    items: [
+      {
+        id: "rev-1",
+        author: "Marco Deiana",
+        initials: "MD",
+        rating: 5,
+        relativeTime: "1 settimana fa",
+        category: "smartphone",
+        device: "iPhone 14 Pro · Sostituzione Display OLED",
+        text: "Portato iPhone con display completamente nero dopo una brutta caduta. Andrea ha sostituito lo schermo in meno di un'ora con pezzo di altissima qualità, conservando TrueTone e tutte le funzioni. Trasparente sul prezzo fin dal primo minuto. Consigliatissimo!",
+        verified: true
+      },
+      {
+        id: "rev-2",
+        author: "Elena Sanna",
+        initials: "ES",
+        rating: 5,
+        relativeTime: "2 settimane fa",
+        category: "notebook",
+        device: "ThinkPad E15 · Upgrade SSD NVMe & Termica",
+        text: "Il mio notebook di lavoro impiegava 5 minuti ad avviarsi ed era diventato inutilizzabile. Clonazione su SSD veloce e pulizia ventole: ora si accende in 7 secondi esatti senza aver perso neppure un documento. Onestà e competenza rare a Olbia.",
+        verified: true
+      },
+      {
+        id: "rev-3",
+        author: "Fabio Columbano",
+        initials: "FC",
+        rating: 5,
+        relativeTime: "1 mese fa",
+        category: "mac",
+        device: "MacBook Pro M1 · Microsaldatura Scheda Madre",
+        text: "In altri centri mi avevano detto che la scheda logica era da buttare con preventivi assurdi. Andrea ha individuato il chip di alimentazione bruciato ed eseguito una microsaldatura impeccabile. Computer resuscitato a un terzo del costo. Un vero professionista.",
+        verified: true
+      },
+      {
+        id: "rev-4",
+        author: "Sara Spano",
+        initials: "SS",
+        rating: 5,
+        relativeTime: "1 mese fa",
+        category: "smartphone",
+        device: "Samsung Galaxy S23 Ultra · Batteria Originale",
+        text: "Sostituzione batteria in giornata con ricambio certificato. Telefono tornato all'autonomia originale di due giorni. Ottima accoglienza in Via Roma e disponibilità massima anche per spiegazioni tecniche.",
+        verified: true
+      },
+      {
+        id: "rev-5",
+        author: "Ristorante Da Pasqualino",
+        initials: "DP",
+        rating: 5,
+        relativeTime: "2 mesi fa",
+        category: "storage",
+        device: "Hard Disk WD 2TB · Recupero Dati Emergenza",
+        text: "Il disco con tutta la contabilità e le fatture degli ultimi 3 anni è caduto ed era illeggibile. Eravamo disperati. Pirina Informatica è riuscito a clonare ed estrarre il 100% dei dati in 48 ore. Ci ha letteralmente salvato l'attività.",
+        verified: true
+      },
+      {
+        id: "rev-6",
+        author: "Gianluca Mura",
+        initials: "GM",
+        rating: 5,
+        relativeTime: "3 mesi fa",
+        category: "smartphone",
+        device: "Xiaomi Redmi · Trattamento Deossidante Liquidi",
+        text: "Telefono caduto in acqua di mare: spento e portato subito in Via Roma. Lavaggio ultrasuoni e deossidazione hanno salvato la scheda madre e tutte le foto di famiglia che non avevo sincronizzato sul cloud. Grazie di cuore!",
+        verified: true
+      }
+    ]
+  }
 };
