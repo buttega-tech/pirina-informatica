@@ -37,11 +37,10 @@
       <nav class="nav-links">
         <a href="#diagnostica" class="nav-link">Diagnosi Guasti</a>
         <a href="#servizi" class="nav-link">Laboratorio</a>
-        <a href="#tracker" class="nav-link">Stato Riparazione</a>
         <a href="#recensioni" class="nav-link">Dicono di Noi</a>
         <a href="#supporto" class="nav-link" style="color: var(--accent-cyan); font-weight: 600;">Assistenza & Ticket</a>
         <a href="#contatti" class="nav-link">Dove Siamo</a>
-        <a href="admin.html" class="nav-link" style="color: var(--accent-purple); font-weight: 600;">Area Desk</a>
+        <a href="/support/pirina-informatica" class="nav-link" style="color: var(--accent-purple); font-weight: 600;">Richieste ricevute</a>
       </nav>
 
       <div class="nav-actions">
@@ -213,69 +212,6 @@
             </a>
             <small class="muted-note">Ricevi risposta diretta e stima di disponibilità del ricambio dal nostro banco di lavoro.</small>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Innovative Live Repair Tracker (Mockup Interattivo) -->
-  <section class="section tracker-section" id="tracker">
-    <div class="container">
-      <div class="tracker-wrapper glass-panel">
-        <div class="tracker-header">
-          <div>
-            <span class="badge-tag">TRASPARENZA TOTALE</span>
-            <h2>Hai un dispositivo in riparazione?</h2>
-            <p>Monitora lo stato di lavorazione del tuo apparato in tempo reale.</p>
-          </div>
-          <div class="tracker-input-box">
-            <input type="text" id="tracker-input" placeholder="Codice scheda (es. PIR-842, OLB-109)..." autocomplete="off">
-            <button id="tracker-btn" class="btn btn-primary">Verifica</button>
-          </div>
-        </div>
-
-        <div class="tracker-demo-hint">
-          <span>Codici demo di prova per testare il tracker:</span>
-          <button class="pill-demo" data-code="PIR-842">PIR-842 (In riparazione)</button>
-          <button class="pill-demo" data-code="OLB-109">OLB-109 (Pronto al ritiro)</button>
-        </div>
-
-        <!-- Stepper Component -->
-        <div class="repair-stepper" id="repair-stepper">
-          <div class="step-item completed">
-            <div class="step-circle">✓</div>
-            <div class="step-label">1. Check-In</div>
-            <div class="step-desc">Ricezione apparato & scheda guasto</div>
-          </div>
-          <div class="step-line active"></div>
-          <div class="step-item completed">
-            <div class="step-circle">✓</div>
-            <div class="step-label">2. Diagnostica</div>
-            <div class="step-desc">Test banchi & stima componenti</div>
-          </div>
-          <div class="step-line active"></div>
-          <div class="step-item current">
-            <div class="step-circle">⚙️</div>
-            <div class="step-label">3. Intervento Hardware</div>
-            <div class="step-desc">Lavorazione attiva al microscopio</div>
-          </div>
-          <div class="step-line"></div>
-          <div class="step-item">
-            <div class="step-circle">🔬</div>
-            <div class="step-label">4. Quality Control</div>
-            <div class="step-desc">Stress test termico e funzionale</div>
-          </div>
-          <div class="step-line"></div>
-          <div class="step-item">
-            <div class="step-circle">📦</div>
-            <div class="step-label">5. Pronto al Ritiro</div>
-            <div class="step-desc">Notifica WhatsApp di consegna</div>
-          </div>
-        </div>
-
-        <div class="tracker-info-banner" id="tracker-banner">
-          <span class="banner-status-dot"></span>
-          <span id="tracker-status-text">Scheda <strong>PIR-842</strong>: iPhone 14 Pro — Sostituzione display OLED e sigillatura IP68 in corso al banco 1.</span>
         </div>
       </div>
     </div>
@@ -530,7 +466,7 @@
           <div class="card-header-simple">
             <span class="support-card-badge">DESK ONLINE</span>
             <h3>Compila la scheda di richiesta</h3>
-            <p class="card-sub">Inserisci i dati essenziali: riceverai riscontro immediato con tracciamento scheda.</p>
+            <p class="card-sub">Inserisci i dati essenziali: riceverai conferma di ricezione con riferimento della richiesta.</p>
           </div>
 
           <form id="support-ticket-form" class="support-form">
@@ -632,7 +568,7 @@
                 <span class="perk-icon">🔬</span>
                 <div>
                   <strong>Conversione Diretta al Banco</strong>
-                  <p>Quando consegnerai il dispositivo in Via Roma 99, il ticket verrà convertito in riparazione in 1 click senza dover ripetere la spiegazione.</p>
+                  <p>La tua richiesta arriva direttamente a Pirina Informatica, che ti ricontatterà per concordare il supporto.</p>
                 </div>
               </div>
             </div>
@@ -678,7 +614,7 @@
 
             <div class="ticket-whatsapp-action">
               <p class="wa-action-instruction">
-                👉 <strong>Passaggio finale:</strong> Clicca sul pulsante qui sotto per aprire WhatsApp con il ticket già compilato e inviarlo direttamente ad Andrea Pirina:
+                La richiesta è già stata ricevuta da Pirina Informatica. Se vuoi, puoi continuare la conversazione su WhatsApp:
               </p>
               <a href="#" id="ticket-whatsapp-btn" target="_blank" rel="noopener" class="btn btn-whatsapp btn-block btn-lg pulse-glow">
                 <span class="wa-icon">💬</span> Continua la discussione su WhatsApp
@@ -806,8 +742,7 @@
     </div>
   </footer>
 
-  <script src="admin.data.js"></script>
-  <script src="admin.store.js"></script>
+  <script type="module" src="support.client.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-// Local support consumer. Loaded explicitly by the shared-sites local gateway.
+// Site support consumer. Requests are confirmed only after the shared backend saves them.
 // Requesters do not sign up. The source-of-truth is the site's support API.
 const form = document.querySelector('#support-ticket-form')
 const button = form.querySelector('button[type="submit"]')

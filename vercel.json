@@ -4,8 +4,12 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/admin",
-      "destination": "/admin.html"
+      "source": "/api/:path*",
+      "destination": "https://fraiga-websites-api.vercel.app/api/:path*"
+    },
+    {
+      "source": "/support/pirina-informatica",
+      "destination": "/support.html"
     }
   ],
   "headers": [
@@ -25,6 +29,29 @@
           "value": "SAMEORIGIN"
         }
       ]
+    },
+    {
+      "source": "/api/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    }
+  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "public",
+  "redirects": [
+    {
+      "source": "/admin",
+      "destination": "/support/pirina-informatica",
+      "permanent": false
+    },
+    {
+      "source": "/admin.html",
+      "destination": "/support/pirina-informatica",
+      "permanent": false
     }
   ]
 }
