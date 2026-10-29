@@ -6,10 +6,6 @@
     {
       "source": "/api/:path*",
       "destination": "https://fraiga-websites-api.vercel.app/api/:path*"
-    },
-    {
-      "source": "/support/pirina-informatica",
-      "destination": "/support"
     }
   ],
   "headers": [
@@ -38,6 +34,19 @@
           "value": "no-store"
         }
       ]
+    },
+    {
+      "source": "/operatore",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ],
   "buildCommand": "npm run build",
@@ -45,12 +54,27 @@
   "redirects": [
     {
       "source": "/admin",
-      "destination": "/support/pirina-informatica",
+      "destination": "/operatore",
       "permanent": false
     },
     {
       "source": "/admin.html",
-      "destination": "/support/pirina-informatica",
+      "destination": "/operatore",
+      "permanent": false
+    },
+    {
+      "source": "/support/pirina-informatica",
+      "destination": "/operatore",
+      "permanent": false
+    },
+    {
+      "source": "/support",
+      "destination": "/operatore",
+      "permanent": false
+    },
+    {
+      "source": "/support.html",
+      "destination": "/operatore",
       "permanent": false
     }
   ]
