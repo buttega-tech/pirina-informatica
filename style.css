@@ -1109,6 +1109,20 @@ body {
   line-height: 1.5;
 }
 
+.footer-operator {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-underline-offset: 4px;
+}
+
+.footer-operator:hover,
+.footer-operator:focus-visible {
+  color: var(--accent-cyan);
+}
+
 .footer-credit {
   margin-top: 12px;
 }
