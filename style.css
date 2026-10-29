@@ -1103,13 +1103,14 @@ body {
 .footer-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; margin-top: 12px; }
 .footer-actions a, .footer-actions button { display: inline-flex; align-items: center; min-height: 36px; }
 .footer-actions button { background: transparent; border: 0; padding: 0; font: inherit; color: var(--text-muted); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
-.footer-hours { margin-top: 20px; display: grid; gap: 10px; }
-.footer-hours > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; }
-.footer-hours dd { color: var(--text-main); text-align: right; }
-.footer-utility { display: flex; flex-direction: column; align-items: flex-start; }
+.footer-hours { margin-top: 20px; display: grid; gap: 10px; width: fit-content; max-width: 100%; }
+.footer-hours > div { display: grid; grid-template-columns: minmax(0, 1fr) max-content; gap: 4px 20px; }
+.footer-hours dd { color: var(--text-main); font-variant-numeric: tabular-nums; }
+.footer-utility { display: flex; flex-direction: column; align-items: flex-end; text-align: right; }
 .footer-operator { display: inline-flex; align-items: center; min-height: 44px; color: var(--text-muted); font-weight: 600; text-underline-offset: 4px; }
 .footer-operator:hover, .footer-operator:focus-visible, .footer-actions button:hover { color: var(--accent-cyan); }
 .footer-credit { margin-top: 12px; }
+.footer-credit fraiga-credit::part(link) { flex-direction: column; align-items: flex-end; gap: 8px; }
 .footer-credit a { color: var(--accent-cyan); text-decoration: underline; text-underline-offset: 3px; }
 .copyright { grid-column: 1 / -1; border-top: 1px solid var(--border-color); padding-top: 20px; font-size: 11px; line-height: 1.6; }
 @media (max-width: 900px) {
