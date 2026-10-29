@@ -9,7 +9,7 @@
     },
     {
       "source": "/support/pirina-informatica",
-      "destination": "/support.html"
+      "destination": "/support"
     }
   ],
   "headers": [
