@@ -632,85 +632,6 @@
     </div>
   </section>
 
-  <!-- Location & Contact Section -->
-  <section class="section contact-section" id="contatti">
-    <div class="container contact-grid">
-      <div class="contact-info glass-panel">
-        <span class="badge-tag">VIENI A TROVARCI A OLBIA</span>
-        <h2>Laboratorio Tecnico di Via Roma</h2>
-        <p class="contact-lead">Porta il tuo apparato direttamente in sede per una diagnosi accurata e senza impegno. Siamo nel cuore di Olbia.</p>
-
-        <div class="info-blocks">
-          <div class="info-block">
-            <span class="info-icon">📍</span>
-            <div>
-              <strong>Indirizzo</strong>
-              <p>Via Roma, 99 — 07026 Olbia (SS)</p>
-              <small class="muted">Parcheggi disponibili nelle vicinanze</small>
-            </div>
-          </div>
-
-          <div class="info-block">
-            <span class="info-icon">📞</span>
-            <div>
-              <strong>Telefono & Assistenza Diretta</strong>
-              <p><a href="tel:+393297245039" class="highlight-link">+39 329 724 5039</a></p>
-              <small class="muted">Anche per consulenze tecniche urgenti</small>
-            </div>
-          </div>
-
-          <div class="info-block">
-            <span class="info-icon">💬</span>
-            <div>
-              <strong>Canale WhatsApp</strong>
-              <p><a href="https://wa.me/393297245039" target="_blank" rel="noopener" class="highlight-link">Invia messaggio con foto del guasto</a></p>
-              <small class="muted">Risposte rapide durante l'orario di laboratorio</small>
-            </div>
-          </div>
-        </div>
-
-        <div class="location-actions">
-          <a href="https://maps.google.com/?q=Via+Roma+99+07026+Olbia+SS" target="_blank" rel="noopener" class="btn btn-primary">
-            🗺️ Apri su Google Maps
-          </a>
-          <button id="copy-address-btn" class="btn btn-outline">
-            📋 Copia Indirizzo
-          </button>
-        </div>
-      </div>
-
-      <!-- Opening Hours & Map Frame -->
-      <div class="hours-card glass-panel">
-        <h3>Orari di Apertura Laboratorio</h3>
-        <p class="muted">Disponibili per check-in apparati e ritiro riparazioni:</p>
-
-        <div class="schedule-table">
-          <div class="schedule-row">
-            <span>Lunedì – Venerdì</span>
-            <span class="hours-badge">09:00 – 13:00 / 16:00 – 19:30</span>
-          </div>
-          <div class="schedule-row">
-            <span>Sabato</span>
-            <span class="hours-badge">09:00 – 13:00</span>
-          </div>
-          <div class="schedule-row closed">
-            <span>Domenica & Festivi</span>
-            <span class="hours-badge muted">Chiuso</span>
-          </div>
-        </div>
-
-        <div class="map-placeholder">
-          <div class="map-inner">
-            <div class="map-pin">📍</div>
-            <strong>Pirina Informatica</strong>
-            <span>Via Roma 99, Olbia</span>
-            <a href="https://maps.google.com/?q=Via+Roma+99+07026+Olbia+SS" target="_blank" rel="noopener" class="map-link">Visualizza Mappa Satellite →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Sticky Bottom Bar for Mobile -->
   <aside class="mobile-bottom-bar">
     <a href="tel:+393297245039" class="m-action phone">
@@ -727,19 +648,35 @@
     </a>
   </aside>
 
-  <!-- Footer -->
-  <footer class="site-footer">
+  <!-- Footer: company information and reserved access -->
+  <footer class="site-footer" id="contatti">
     <div class="container footer-content">
-      <div class="footer-brand">
-        <strong>PIRINA INFORMATICA</strong>
-        <p>Laboratorio Tecnico Hardware, Manutenzione e Riparazione Dispositivi a Olbia (Gallura).</p>
-      </div>
-      <div class="footer-meta">
-        <p>Titolare: <em>Pirina Andrea</em> · Sede: Via Roma 99, 07026 Olbia (SS)</p>
-        <p class="copyright">© 2026 Pirina Informatica. Tutti i marchi citati (Apple, Samsung, Microsoft, ecc.) appartengono ai rispettivi proprietari e sono usati a soli fini descrittivi della compatibilità.</p>
-        <p><a href="/operatore" class="footer-operator">Accesso operatore</a></p>
+      <section class="footer-company" aria-labelledby="footer-company-title">
+        <h2 id="footer-company-title">PIRINA INFORMATICA</h2>
+        <p>Laboratorio tecnico hardware, manutenzione e riparazione dispositivi a Olbia.</p>
+        <p class="footer-owner">Titolare: <strong>Pirina Andrea</strong></p>
+        <address>Via Roma, 99<br>07026 Olbia (SS)</address>
+        <p class="footer-hint">Parcheggi disponibili nelle vicinanze.</p>
+        <div class="footer-actions">
+          <a href="https://maps.google.com/?q=Via+Roma+99+07026+Olbia+SS" target="_blank" rel="noopener noreferrer">Apri la mappa ↗</a>
+          <button id="copy-address-btn" type="button">Copia indirizzo</button>
+        </div>
+      </section>
+      <section class="footer-contacts" aria-labelledby="footer-contacts-title">
+        <h2 id="footer-contacts-title">Contatti e orari</h2>
+        <p><a href="tel:+393297245039">+39 329 724 5039</a></p>
+        <p><a href="https://wa.me/393297245039" target="_blank" rel="noopener noreferrer">Scrivi su WhatsApp ↗</a></p>
+        <dl class="footer-hours">
+          <div><dt>Lunedì – Venerdì</dt><dd>09:00 – 13:00<br>16:00 – 19:30</dd></div>
+          <div><dt>Sabato</dt><dd>09:00 – 13:00</dd></div>
+          <div><dt>Domenica e festivi</dt><dd>Chiuso</dd></div>
+        </dl>
+      </section>
+      <div class="footer-utility">
+        <a href="/operatore" class="footer-operator">Accesso operatore</a>
         <p class="footer-credit"><fraiga-credit theme="dark"><a href="https://fraiga.it/" target="_blank" rel="noopener noreferrer">realizzato da fraiga</a></fraiga-credit></p>
       </div>
+      <p class="copyright">© 2026 Pirina Informatica. Tutti i marchi citati (Apple, Samsung, Microsoft, ecc.) appartengono ai rispettivi proprietari e sono usati a soli fini descrittivi della compatibilità.</p>
     </div>
   </footer>
 
