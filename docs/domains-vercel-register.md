@@ -83,6 +83,15 @@ Controlli sul dominio definitivo:
 La pagina pubblica e `/operatore` sono raggiungibili; i dati riservati restano
 protetti. Questo collaudo non ha usato credenziali operatore né letto messaggi.
 
+Verifica aggiuntiva il 30 ottobre 2026 alle 19:43:34 UTC: le impostazioni
+runtime di Supabase Auth confermano `disable_signup: true`,
+`external.anonymous_users: false` ed `external.email: true`. Il login email
+resta disponibile agli account esistenti; la registrazione pubblica è chiusa
+nel servizio, oltre a non essere offerta dalla pagina operatore. La pagina
+live mostra solo Email, Password e Accedi, con la nota che il supporto dal sito
+non richiede un account. Nessun account, credenziale o impostazione modificati.
+Ricevuta: `signup-verification.json` nella stessa cartella delle prove sotto.
+
 ## SEO, prove e limiti
 
 Gli alias verificati non servono copie con risposta 200: rispondono 308 verso
