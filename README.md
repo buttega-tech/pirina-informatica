@@ -10,6 +10,16 @@
 
 ---
 
+## Accessi alla casella `/operatore`
+
+Le persone di Pirina entrano con un invito monouso: dalla casella, «Invita una persona»
+crea il link `/operatore/attiva#invito=…` (72 ore, una volta) e lo condivide via WhatsApp,
+SMS, email, Telegram, altre app o copia, anche direttamente al numero indicato. Chi lo
+apre sceglie email e password. Fraiga entra come amministratore di piattaforma per gli
+interventi richiesti. La condivisione usa `@bottega/share-core` fissato in
+`vendor/share-core-0.1.0.tgz`; la build pubblica il modulo come `/share-core.js`.
+Backend e regole: `console-buttega/docs/pirina-support-cloud.md`.
+
 ## Integrazione locale delle richieste di supporto
 
 Il servizio Bottega per Pirina comprende sito e raccolta delle richieste:

@@ -47,6 +47,23 @@
           "value": "noindex, nofollow"
         }
       ]
+    },
+    {
+      "source": "/operatore/attiva",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        }
+      ]
     }
   ],
   "buildCommand": "npm run build",
