@@ -10,15 +10,14 @@
 
 ---
 
-## Accessi alla casella `/operatore`
+## Accessi alla casella
 
-Le persone di Pirina entrano con un invito monouso: dalla casella, «Invita una persona»
-crea il link `/operatore/attiva#invito=…` (72 ore, una volta) e lo condivide via WhatsApp,
-SMS, email, Telegram, altre app o copia, anche direttamente al numero indicato. Chi lo
-apre sceglie email e password. Fraiga entra come amministratore di piattaforma per gli
-interventi richiesti. La condivisione usa `@bottega/share-core` fissato in
-`vendor/share-core-0.1.0.tgz`; la build pubblica il modulo come `/share-core.js`.
-Backend e regole: `console-buttega/docs/pirina-support-cloud.md`.
+La casella delle richieste e gli accessi stanno nell'area operatori comune dei siti
+Fraiga, `https://operatori.sites.fraiga.it` (password, Google, passkey; inviti monouso
+«Invita una persona»). `/operatore`, `/operatore/attiva` e i vecchi percorsi `/admin`
+e `/support` rimandano lì; il link d'invito conserva il frammento `#invito=…`.
+Questo sito tiene soltanto la pagina pubblica e la raccolta delle richieste.
+Backend e regole: `console-buttega/docs/website-operators-console.md`.
 
 ## Integrazione locale delle richieste di supporto
 

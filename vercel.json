@@ -34,64 +34,44 @@
           "value": "no-store"
         }
       ]
-    },
-    {
-      "source": "/operatore",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-store"
-        },
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        }
-      ]
-    },
-    {
-      "source": "/operatore/attiva",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-store"
-        },
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "no-referrer"
-        }
-      ]
     }
   ],
   "buildCommand": "npm run build",
   "outputDirectory": "public",
   "redirects": [
     {
+      "source": "/operatore/attiva",
+      "destination": "https://operatori.sites.fraiga.it/attiva",
+      "permanent": false
+    },
+    {
       "source": "/admin",
-      "destination": "/operatore",
+      "destination": "https://operatori.sites.fraiga.it/",
       "permanent": false
     },
     {
       "source": "/admin.html",
-      "destination": "/operatore",
+      "destination": "https://operatori.sites.fraiga.it/",
       "permanent": false
     },
     {
       "source": "/support/pirina-informatica",
-      "destination": "/operatore",
+      "destination": "https://operatori.sites.fraiga.it/",
       "permanent": false
     },
     {
       "source": "/support",
-      "destination": "/operatore",
+      "destination": "https://operatori.sites.fraiga.it/",
       "permanent": false
     },
     {
       "source": "/support.html",
-      "destination": "/operatore",
+      "destination": "https://operatori.sites.fraiga.it/",
+      "permanent": false
+    },
+    {
+      "source": "/operatore",
+      "destination": "https://operatori.sites.fraiga.it/",
       "permanent": false
     }
   ]

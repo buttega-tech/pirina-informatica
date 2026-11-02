@@ -16,8 +16,5 @@
     "hardware"
   ],
   "author": "Pirina Informatica",
-  "license": "UNLICENSED",
-  "dependencies": {
-    "@bottega/share-core": "file:vendor/share-core-0.1.0.tgz"
-  }
+  "license": "UNLICENSED"
 }
